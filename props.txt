@@ -1,0 +1,37 @@
+Isso mesmo, as props são somente leitura (read-only) no componente filho. Se você precisar alterar o valor de uma propriedade de um componente, você pode fazer isso no componente pai e, em seguida, passar o novo valor como uma prop para o componente filho novamente.
+
+Por exemplo, suponha que você tenha um componente Parent que passa a prop color para o seu componente filho Child. Se você quiser alterar a cor no componente Parent, você pode armazenar a nova cor em um estado interno do componente Parent e passá-la novamente para o componente Child como uma prop.
+
+Aqui está um exemplo:
+import React, { useState } from 'react';
+import Child from './Child';
+
+function Parent() {
+  const [color, setColor] = useState('red');
+
+  const handleColorChange = () => {
+    setColor('blue');
+  }
+
+  return (
+    <div>
+      <button onClick={handleColorChange}>Change Color</button>
+      <Child color={color} />
+    </div>
+  );
+}
+
+import React from 'react';
+
+function Child(props) {
+  return (
+    <div>
+      <p>Valor da prop recebida: {props.color}</p>
+    </div>
+  );
+}
+
+export default Child;
+export default Parent;
+
+No exemplo acima, o componente Parent possui um estado interno color que é inicializado com o valor "red". Quando o botão "Change Color" é clicado, o estado é atualizado com o valor "blue" e a nova cor é passada para o componente Child como uma prop color. O componente Child exibe a cor recebida como uma prop.
