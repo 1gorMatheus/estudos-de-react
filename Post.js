@@ -1,20 +1,21 @@
-import React from "react";
+import React, {useContext} from 'react';
 import PropTypes from "prop-types";
 import Button from "./button";
 import PostHeader from "./PostHeader";
+import { ThemeContext } from './App';
 export default function Post(props) {
+  const {onToggleTheme}= useContext(ThemeContext)
   return (
     <div>
       <article>
         <PostHeader
           tittle={props.post.tittle}
           subtittle={props.post.subtittle}
-          theme={props.theme}
         />
-        <p>{props.children}</p>
+        {props.children}
         <p>Likes: {props.likes}</p>
       </article>
-      <Button theme={props.theme} onClick={props.onToggleTheme}>
+      <Button onClick={onToggleTheme}>
         Mudar Tema
       </Button>
 
