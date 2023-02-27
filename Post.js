@@ -9,13 +9,15 @@ export default function Post(props) {
         <PostHeader
           tittle={props.post.tittle}
           subtittle={props.post.subtittle}
-        ></PostHeader>
+          theme={props.theme}
+        />
         <p>{props.children}</p>
         <p>Likes: {props.likes}</p>
       </article>
       <Button theme={props.theme} onClick={props.onToggleTheme}>
         Mudar Tema
       </Button>
+
     </div>
   );
 }

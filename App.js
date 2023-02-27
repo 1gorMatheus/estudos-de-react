@@ -1,6 +1,8 @@
 import React, { createContext, useState } from "react";
 import Header from "./Header";
 import Post from "./Post";
+
+
 function App() {
 const [theme, setTheme] = useState('dark')
 function handletoggleTheme(){
@@ -8,10 +10,11 @@ function handletoggleTheme(){
     prevState === 'dark'? 'light' : 'dark'
       ))
 }
-
   return (
     <>
-      <Header>
+      <Header theme={theme}
+      onToggleTheme={handletoggleTheme}
+      >
         <h1>oi</h1>
       </Header>
 
